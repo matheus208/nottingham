@@ -1,0 +1,13 @@
+function y=my_rgb2grey(image, weigh)
+    x = [;;]
+    if weigh
+        x=(0.30*image(:,:,1)+0.59*image(:,:,2)+0.11*image(:,:,3))/3;
+    else
+        x=(image(:,:,1)+image(:,:,2)+image(:,:,3))/3;
+    end
+    
+    maximum = max(max(x))
+    minimum = min(min(x))
+    
+    y = (x-minimum)*
+    
