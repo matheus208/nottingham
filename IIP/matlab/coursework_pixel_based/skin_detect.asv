@@ -1,0 +1,29 @@
+function y=skin_detect(img)
+    %we have an rgb image, let's iterate over the pixels and mark the ones
+    %that have hue similar to skin
+    
+    %reduce noise
+    
+    
+    %convert the image to hsv
+    hsv = rgb2hsv(img);
+    
+    %copy the output
+    output = hsv;
+    %iterate over the pixels in the image
+    for i=1:size(output,1)
+        for j=1:size(output,2)
+            %if we have a matching hue
+            if(output(i,j,1) > 6/360 && output(i,j,1) < 38/360)
+               %set to red
+                output(i,j,1) = 255;
+                output(i,j,2) = 0;
+                output(i,j,3) = 0;
+            end
+                
+        end
+    end
+    
+    y=output;
+    
+    
