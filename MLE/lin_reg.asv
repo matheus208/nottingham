@@ -1,0 +1,22 @@
+function [a,b] = lin_reg(data)
+
+    delta = 0.01; %Convergente == varying less than 1%
+
+    a = 0;
+    b = 0;
+    
+    prev_a = inf;
+    prev_b = inf;
+    
+    %While it does not converge
+    while (a-prev_a)/prev_a > delta && (b-prev_b)/prev_b > delta
+        prev_a = a;
+        prev_b = b;
+        [a,b] = stepGradDesc(prev_a,prev_b,data,learningRate);
+    end
+
+end
+
+
+
+function 
