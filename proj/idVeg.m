@@ -7,8 +7,9 @@ function idVeg( image )
     [vegCluster, idx] = identifyVegCluster(image, masks);
     whiteCluster = identifyWhiteCluster(image, masks);
     
+    %vegCluster = medfilt2(vegCluster, [30 30]);
+    
     veg = displayImgMask(image, vegCluster, 1);
-    white = displayImgMask(image, whiteCluster, 1);
     
     subplot(1,2,1);
     imshow(image);

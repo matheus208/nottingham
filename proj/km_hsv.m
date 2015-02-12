@@ -7,10 +7,8 @@ function [masks, sumd] = km_hsv(image, reps, type, clusters)
     
     nColors = clusters;
         
-    h = hsv(:,:,1); h=h(:);
-    s = hsv(:,:,2); s=s(:);
-    v = hsv(:,:,3); v=v(:);
-
+    h = double(hsv(:,:,1:2)); h=h(:);
+    
     [cluster_idx, ~, sumd] = kmeans(h,...
         nColors,...
         'distance',type,...
