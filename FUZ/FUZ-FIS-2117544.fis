@@ -1,0 +1,46 @@
+[System]
+Name='MedicalAdvisor'
+Type='mamdani'
+Version=1.0
+NumInputs=2
+NumOutputs=1
+NumRules=4
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='som'
+
+[Input1]
+Name='temperature'
+Range=[33 43]
+NumMFs=3
+MF1='low':'gaussmf',[3 33 1]
+MF2='normal':'gaussmf',[3 37 1]
+MF3='high':'gaussmf',[3 43 1]
+
+[Input2]
+Name='headache'
+Range=[0 100]
+NumMFs=5
+MF1='normal':'gaussmf',[20 0 1]
+MF2='mild':'gaussmf',[20 20 1]
+MF3='moderate':'gaussmf',[20 40 1]
+MF4='severe':'gaussmf',[20 75 1]
+MF5='profound':'gaussmf',[20 100 1]
+
+[Output1]
+Name='emergency'
+Range=[0 100]
+NumMFs=5
+MF1='none':'gaussmf',[25 0 1]
+MF2='mild':'gaussmf',[25 25 1]
+MF3='careful':'gaussmf',[25 50 1]
+MF4='worry':'gaussmf',[25 75 1]
+MF5='urgent':'gaussmf',[25 100 1]
+
+[Rules]
+2 1, 1 (1) : 1
+3 0, 5 (1) : 2
+1 0, 5 (1) : 2
+0 5, 5 (2) : 2
